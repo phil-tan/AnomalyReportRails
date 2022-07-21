@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_21_114003) do
+ActiveRecord::Schema.define(version: 2022_07_21_101204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "buildings", force: :cascade do |t|
+    t.string "name"
+    t.string "short_name"
+    t.string "address"
+    t.string "image_url"
+    t.string "access_list"
+    t.bigint "site_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["site_id"], name: "index_buildings_on_site_id"
+  end
+
+  create_table "charts", force: :cascade do |t|
+    t.string "title"
+    t.integer "row"
+    t.integer "order"
+    t.string "points"
+    t.string "parent_type"
+    t.bigint "site_id", null: false
+    t.bigint "building_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["building_id"], name: "index_charts_on_building_id"
+    t.index ["site_id"], name: "index_charts_on_site_id"
+  end
+
+  create_table "sites", force: :cascade do |t|
+    t.string "name"
+    t.string "short_name"
+    t.string "address"
+    t.string "image_url"
+    t.string "access_list"
+    t.bigint "site_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["site_id"], name: "index_sites_on_site_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +65,8 @@ ActiveRecord::Schema.define(version: 2022_07_21_114003) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "buildings", "sites"
+  add_foreign_key "charts", "buildings"
+  add_foreign_key "charts", "sites"
+  add_foreign_key "sites", "sites"
 end
