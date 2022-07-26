@@ -1,0 +1,81 @@
+body {
+  margin: auto;
+  font-size: 16px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* .navbar {
+  background-color: blue;
+} */
+
+.chart-row {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+
+.fac-image{
+  height: 200px;
+  width: 100%;
+  margin: auto;
+  border: 1px solid black;
+}
+
+.col-2 {
+  color: white;
+  background-color: black;
+  min-height: 100vh;
+}
+
+.col-10 {
+  background-color: lightgray;
+}
+/* .js-plotly-plot {
+  width: 90vw;
+  height: 50vh;
+} */
+
+
+.plot-class {
+  /* margin: auto; */
+  /* box-shadow: 10px 10px 5px gray ; */
+  margin: 10px;
+  height: 300px;
+  padding: 0px;
+  width: 700px;
+}
+
+.svg-container {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+.side-panel {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: black;
+  color: white;
+  padding-top: 20px;
+  height: 100vh;
+}
+
+.table {
+  font-size: 16px;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+  bottom: .5em;
+}

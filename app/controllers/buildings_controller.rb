@@ -3,6 +3,9 @@ class BuildingsController < ApplicationController
   end
 
   def show
+    @building = Building.find(params[:id])
+    @building_charts = @building.charts
+    # @backlink = {text: 'Back to Site', link: site_path(@building.site.id)}
   end
 
   def new

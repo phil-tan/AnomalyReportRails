@@ -1,3 +1,3 @@
 class Site < ApplicationRecord
-  belongs_to :site
+  has_many :buildings
 end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # sites
   get '/sites', to: 'sites#index'
-  get '/sites/:id', to: 'sites#show'
+  get '/sites/:id', to: 'sites#show', as: 'site'
   get '/sites/new', to: 'sites#new'
   post '/sites', to: 'sites#create'
   get '/sites/:id/edit', to: 'sites#edit'
@@ -27,12 +27,12 @@ Rails.application.routes.draw do
   get '/building/:id/report', to: 'buildings#report'
 
   # charts
-get '/sites/:id/charts/new', to: 'charts#new'
-post '/sites/:id/charts', to: 'charts#create'
-get '/buildings/:id/charts/new', to: 'charts#new'
-post '/buildings/:id/charts', to: 'charts#create'
-get '/charts/:id/edit', to: 'charts#edit'
-patch '/charts/:id', to: 'charts#update'
-delete '/charts/:id', to: 'charts#destroy'
+  get '/sites/:id/charts/new', to: 'charts#new'
+  post '/sites/:id/charts', to: 'charts#create'
+  get '/buildings/:id/charts/new', to: 'charts#new'
+  post '/buildings/:id/charts', to: 'charts#create'
+  get '/charts/:id/edit', to: 'charts#edit'
+  patch '/charts/:id', to: 'charts#update'
+  delete '/charts/:id', to: 'charts#destroy'
 
 end

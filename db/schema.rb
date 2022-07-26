@@ -18,8 +18,7 @@ ActiveRecord::Schema.define(version: 2022_07_21_101204) do
   create_table "buildings", force: :cascade do |t|
     t.string "name"
     t.string "short_name"
-    t.string "address"
-    t.string "image_url"
+    t.string "image", default: "http://coghillcartooning.com/wp-content/uploads/2010/05/Red-Inc-biz-illustrations-large-v01-e1273166396418.jpg"
     t.string "access_list"
     t.bigint "site_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -31,26 +30,22 @@ ActiveRecord::Schema.define(version: 2022_07_21_101204) do
     t.string "title"
     t.integer "row"
     t.integer "order"
+    t.string "width"
     t.string "points"
     t.string "parent_type"
-    t.bigint "site_id", null: false
     t.bigint "building_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["building_id"], name: "index_charts_on_building_id"
-    t.index ["site_id"], name: "index_charts_on_site_id"
   end
 
   create_table "sites", force: :cascade do |t|
     t.string "name"
     t.string "short_name"
-    t.string "address"
-    t.string "image_url"
+    t.string "image", default: "http://coghillcartooning.com/wp-content/uploads/2010/05/Red-Inc-biz-illustrations-large-v01-e1273166396418.jpg"
     t.string "access_list"
-    t.bigint "site_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["site_id"], name: "index_sites_on_site_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,6 +62,4 @@ ActiveRecord::Schema.define(version: 2022_07_21_101204) do
 
   add_foreign_key "buildings", "sites"
   add_foreign_key "charts", "buildings"
-  add_foreign_key "charts", "sites"
-  add_foreign_key "sites", "sites"
 end
