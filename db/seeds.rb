@@ -60,12 +60,12 @@ buildings_table.each do |row|
   p new_building.name
 end
 
-c1 = Chart.create!(building_id: 8, row: 1, parent_type: 'building', title: 'Chilled Water', points: "B75 Chemistry CHW")
-c2 = Chart.create!(building_id:8, row:2, parent_type:'building', title:'Steam', points:"B75 Chemistry STM")
-c3 = Chart.create!(building_id:2, row:3, parent_type:'building', title:'Chilled Water', points:'B47 Genomics CHW')
-c4 = Chart.create!(building_id:3, row:4, parent_type:'building', title:'Steam', points:'B161 Elipse Dorm STM')
-c5 = Chart.create!(building_id:4, row: 1, parent_type:'building', title:'Chilled Water', points:'B27 Computer Science CHW')
-c6 = Chart.create!(building_id:5, row: 1, parent_type:'building', title:'Steam', points:'B130 Jadwin Physics STM')
+c1 = Chart.create!(parent_id: 8, row: 1, parent_type: 'building', title: 'Chilled Water', points: "B75 Chemistry CHW")
+c2 = Chart.create!(parent_id:8, row:2, parent_type:'building', title:'Steam', points:"B75 Chemistry STM")
+c3 = Chart.create!(parent_id:2, row:3, parent_type:'building', title:'Chilled Water', points:'B47 Genomics CHW')
+c4 = Chart.create!(parent_id:3, row:4, parent_type:'building', title:'Steam', points:'B161 Elipse Dorm STM')
+c5 = Chart.create!(parent_id:4, row: 1, parent_type:'building', title:'Chilled Water', points:'B27 Computer Science CHW')
+c6 = Chart.create!(parent_id:5, row: 1, parent_type:'building', title:'Steam', points:'B130 Jadwin Physics STM')
 
 
 puts "SEED COMPLETE"

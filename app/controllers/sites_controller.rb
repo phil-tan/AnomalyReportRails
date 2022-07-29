@@ -31,4 +31,8 @@ class SitesController < ApplicationController
 
   def points
   end
+
+  def send_data
+    @data = "This is your data"
+  end
 end

@@ -24,7 +24,7 @@ end
 
 
 @api.route("/api/<string:url_args>")
-def api_building_data(url_args):
+def api_building_data(url_args)
     # start_time = datetime.now()
     args_dict = url_decode(url_args)
 

@@ -2,12 +2,12 @@ class CreateCharts < ActiveRecord::Migration[6.1]
   def change
     create_table :charts do |t|
       t.string :title
-      t.integer :row
-      t.integer :order
+      t.integer :row, :default => 1
+      t.integer :position, :default => 1
       t.string :width
       t.string :points
       t.string :parent_type
-      t.references :building, null: false, foreign_key: true
+      t.integer :parent_id
 
       t.timestamps
     end

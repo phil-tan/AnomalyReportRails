@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   patch '/sites/:id/access', to: 'sites#index'
   get '/sites/:id/points', to: 'sites#points'
   post '/sites/:id/upload_data', to: 'sites#upload_data'
+  get '/sites/:id/data/:url_args', to: 'sites#send_data'
 
   # buildings
   get '/sites/:site_id/buildings', to: 'buildings#index'
@@ -24,7 +25,8 @@ Rails.application.routes.draw do
   get '/buildings/:id/edit', to: 'buildings#edit'
   patch '/buildings/:id', to: 'buildings#update'
   delete '/buildings/:id', to: 'buildings#destroy'
-  get '/building/:id/report', to: 'buildings#report'
+  get '/buildings/:id/report', to: 'buildings#report'
+  get '/buildings/:id/data/:url_args', to: 'buildings#send_data'
 
   # charts
   get '/sites/:id/charts/new', to: 'charts#new'

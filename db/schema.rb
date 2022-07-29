@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2022_07_21_101204) do
     t.string "short_name"
     t.string "image", default: "http://coghillcartooning.com/wp-content/uploads/2010/05/Red-Inc-biz-illustrations-large-v01-e1273166396418.jpg"
     t.string "access_list"
-    t.bigint "site_id", null: false
+    t.bigint "site_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["site_id"], name: "index_buildings_on_site_id"
@@ -28,15 +28,14 @@ ActiveRecord::Schema.define(version: 2022_07_21_101204) do
 
   create_table "charts", force: :cascade do |t|
     t.string "title"
-    t.integer "row"
-    t.integer "order"
+    t.integer "row", default: 1
+    t.integer "position", default: 1
     t.string "width"
     t.string "points"
     t.string "parent_type"
-    t.bigint "building_id", null: false
+    t.integer "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["building_id"], name: "index_charts_on_building_id"
   end
 
   create_table "sites", force: :cascade do |t|
@@ -61,5 +60,4 @@ ActiveRecord::Schema.define(version: 2022_07_21_101204) do
   end
 
   add_foreign_key "buildings", "sites"
-  add_foreign_key "charts", "buildings"
 end
