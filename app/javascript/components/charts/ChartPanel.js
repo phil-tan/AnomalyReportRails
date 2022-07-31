@@ -12,7 +12,7 @@ const ChartPanel = ({ charts, charts_data, site_points_list }) => {
         ].map((value, index) => (
           <div className='chart-row' key={`row-${index+1}`}>
                 { charts.filter(chart => chart.row == index+1).sort((a, b) =>
-                        a.position - b.position).map((chart) =><ChartCard chart={chart} charts_data={charts_data}
+                        a.position - b.position).map((chart) =><ChartCard chart={chart} charts_data={charts_data} if_modal={false}
                                                                     site_points_list={site_points_list} key={chart.position}/>)}
             </div>
         ))}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { MultiSelect } from "react-multi-select-component";
+import { useEffect } from 'react';
 
 
 const EditForm = ({chart, site_points_list}) => {
@@ -8,10 +9,17 @@ const EditForm = ({chart, site_points_list}) => {
   const [row, setRow] = useState(chart.row)
   const [position, setPosition] = useState(chart.position)
   const [width, setWidth] = useState(chart.width)
-  const [points, setPoints] = useState(chart.points)
   const [selected, setSelected] = useState([]);
 
-  console.log(`Edit Button: ${site_points_list}`)
+  useEffect(() => {
+    const points_array = chart.points.split(',')
+    let selected_points = []
+    points_array.forEach(point => {
+      selected_points.push({'label': point, 'value': point})
+    })
+    setSelected(selected_points)
+    console.log(selected_points)
+  }, [])
 
   const onSubmit = (e) => {
     console.log(e.target.elements)
@@ -20,7 +28,12 @@ const EditForm = ({chart, site_points_list}) => {
     new_chart.row = row
     new_chart.width = width
     new_chart.position = position
-    new_chart.points = points
+    let points = []
+    selected.forEach(opt =>{
+      points.push(opt.value)
+    })
+    new_chart.points = points.toString();
+    console.log(new_chart.points)
 
     fetch(`http://localhost:3000/charts/${chart.id}`, {
       method: 'PATCH', // or 'PUT'
@@ -45,11 +58,12 @@ const EditForm = ({chart, site_points_list}) => {
   }
 
   let options = []
-  console.log(site_points_list)
   site_points_list.sort();
   site_points_list.forEach(point => {
     options.push({label: point, value: point})
   });
+
+  // setSelected(chart.points.split(','))
 
    return (
       <div className='container'>
