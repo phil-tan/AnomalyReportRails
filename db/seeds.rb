@@ -55,17 +55,23 @@ buildings_table.each do |row|
     name: row["name"],
     short_name: row['short_name'],
     # image: row['image_url'],
-    site_id: Site.find_by(name: row['parent_site']).id
+    site_id: Site.find_by(short_name: row['parent_site']).id
   )
   p new_building.name
 end
 
-c1 = Chart.create!(parent_id: 8, row: 1, parent_type: 'building', title: 'Chilled Water', points: "B75 Chemistry CHW")
-c2 = Chart.create!(parent_id:8, row:2, parent_type:'building', title:'Steam', points:"B75 Chemistry STM")
-c3 = Chart.create!(parent_id:2, row:3, parent_type:'building', title:'Chilled Water', points:'B47 Genomics CHW')
-c4 = Chart.create!(parent_id:3, row:4, parent_type:'building', title:'Steam', points:'B161 Elipse Dorm STM')
-c5 = Chart.create!(parent_id:4, row: 1, parent_type:'building', title:'Chilled Water', points:'B27 Computer Science CHW')
-c6 = Chart.create!(parent_id:5, row: 1, parent_type:'building', title:'Steam', points:'B130 Jadwin Physics STM')
+charts_table = CSV.parse(File.read("db/charts_seed.csv"), headers: true)
 
+charts_table.each do |row|
+  new_chart = Chart.create!(
+    parent_id: Building.find_by(short_name: row['short_name']).id,
+    parent_type: 'building',
+    title: row["title"],
+    points: row['points'],
+    row: row['row'],
+    position: row['position']
+  )
+  p new_chart.title
+end
 
 puts "SEED COMPLETE"

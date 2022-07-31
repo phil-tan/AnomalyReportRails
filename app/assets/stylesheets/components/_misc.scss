@@ -12,12 +12,6 @@ code {
   background-color: blue;
 } */
 
-.chart-row {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-}
-
 
 .fac-image{
   height: 200px;
@@ -28,7 +22,7 @@ code {
 
 .col-2 {
   color: white;
-  background-color: black;
+  background-color: #22577a;
   min-height: 100vh;
 }
 
@@ -41,23 +35,7 @@ code {
 } */
 
 
-.plot-class {
-  /* margin: auto; */
-  /* box-shadow: 10px 10px 5px gray ; */
-  margin: 10px;
-  height: 300px;
-  padding: 0px;
-  width: 700px;
-}
-
-.svg-container {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
-}
-
 .side-panel {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: black;
   color: white;
   padding-top: 20px;
   height: 100vh;

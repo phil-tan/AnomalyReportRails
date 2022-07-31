@@ -1,0 +1,35 @@
+.chart-modal .modal-dialog {
+  width: 100vw;
+  height: 80vh;
+  margin: 1em 1em 1em 1em;
+  justify-content: center;
+  $modal-fade-transform: scale(.8)
+}
+
+.chart-modal .modal-content {
+  width: 90vw;
+  height: 90vh;
+  justify-content: center;
+}
+
+.chart-modal .modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chart-modal .svg-container {
+  height: 100vh;
+}
+
+.chart-edit .modal-dialog {
+  width: 90vw;
+  height: 90vh;
+  margin: 1em 1em 1em 1em;
+  justify-content: center;
+}
+
+.chart-edit .modal-content {
+  width: 70vw;
+  align-self: center;
+}

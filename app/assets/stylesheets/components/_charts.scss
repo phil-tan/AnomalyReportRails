@@ -1,0 +1,41 @@
+.chart-row {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  height: 35vh;
+}
+
+.chart-card {
+  /* margin: auto; */
+  /* box-shadow: 10px 10px 5px gray ; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 10px;
+  padding: 0px;
+  background-color: white;
+  text-align: center;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.svg-container {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+}
+
+.plot-container {
+  text-align: center;
+}
+
+.main-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.chart-menu {
+  text-align: right;
+  display: block;
+}

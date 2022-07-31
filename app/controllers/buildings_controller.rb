@@ -7,6 +7,7 @@ class BuildingsController < ApplicationController
   def show
     @building = Building.find(params[:id])
     @building_charts = @building.charts
+    @site_points_list = @building.site.points_list
   end
 
   def new
@@ -29,8 +30,11 @@ class BuildingsController < ApplicationController
 
   def send_data
     building = Building.find(params[:id])
+    url_args = params[:url_args].split('&')
+    start_date = url_args[1]
+    end_date = url_args[3]
     table = CSV.read("app/assets/datasets/site_#{building.site_id}_energy.csv", headers: true, converters: :numeric)
-    table = table.select {|row| Date.parse(row.to_h['dt']) < Date.parse('2018-01-01')}
+    table = table.select {|row| Date.parse(row.to_h['dt']) < Date.parse(end_date) && Date.parse(row.to_h['dt']) > Date.parse(start_date)}
     table_by_cols = {}
     table.each do |row|
       row.each do |el|

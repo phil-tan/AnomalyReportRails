@@ -1,9 +1,17 @@
 name,short_name,image_url,parent_site
-Terminal 1,T1,,Oceanside Airport
-Terminal E,TE,,Oceanside Airport
-Terminal W,TW,,Oceanside Airport
-Computer Science,B27,,Princeton University
-Jadwin Physics,B130,,Princeton University
-Genomics,B47,,Princeton University
-Elipse Dorm,B161,,Princeton University
-Chemistry,B75,,Princeton University
+Terminal 1,T1,,OSAA
+Terminal E,TE,,OSAA
+Terminal W,TW,,OSAA
+Computer Science,B27,,PUENG
+Jadwin Physics,B130,,PUSCI
+Genomics,B47,,PUSCI
+Chemistry,B75,,PUSCI
+Energy Research,B106G,,PUENG
+Equad,B106,,PUENG
+Equad Expansion,B106J,,PUENG
+Fine Hall,B139,,PUSCI
+Friend Center,BFC,,PUENG
+Andlinger Center,B729,,PUENG
+Moffitt Labs,B3B,,PUSCI
+Neuro Science,B4,,PUSCI
+Lewis Thomas,B41,,PUSCI

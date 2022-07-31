@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import SidePanel from '../_partials/SidePanelBuilding'
+import SidePanel from '../buildings/SidePanelBuilding'
 
 
 const SitesPage = ({sites}) => {
