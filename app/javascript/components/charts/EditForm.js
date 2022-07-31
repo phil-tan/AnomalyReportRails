@@ -4,7 +4,7 @@ import { MultiSelect } from "react-multi-select-component";
 import { useEffect } from 'react';
 
 
-const EditForm = ({chart, site_points_list}) => {
+const EditForm = ({chart, site_points_list, new_or_edit}) => {
   const [title, setTitle] = useState(chart.title)
   const [row, setRow] = useState(chart.row)
   const [position, setPosition] = useState(chart.position)
@@ -35,8 +35,15 @@ const EditForm = ({chart, site_points_list}) => {
     new_chart.points = points.toString();
     console.log(new_chart.points)
 
-    fetch(`http://localhost:3000/charts/${chart.id}`, {
-      method: 'PATCH', // or 'PUT'
+    let req_method = 'PATCH'
+    let req_url = `http://localhost:3000/charts/${chart.id}`
+    if(new_or_edit === 'new'){
+      req_method = 'POST'
+      req_url = `http://localhost:3000/buildings/${chart.parent_id}/charts`
+    }
+
+    fetch(req_url, {
+      method: req_method, // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
       },
@@ -81,7 +88,7 @@ const EditForm = ({chart, site_points_list}) => {
           <label>Position</label><input className='form-control' type='text' value={position} onChange={(e)=>setPosition(e.target.value)}/>
         </div>
         <div className='form-group'>
-          <label>Width</label><input className='form-control' type='text' value={width} onChange={(e)=>setWidth(e.target.value)}/>
+          <label>Width: 1/4, 1/3, 1/2, 2/3, 3/4, full</label><input className='form-control' type='text' value={width} onChange={(e)=>setWidth(e.target.value)}/>
         </div>
         </div>
         <div className='col-6'>

@@ -5,6 +5,8 @@ class ChartsController < ApplicationController
   end
 
   def create
+    @chart = Chart.new(chart_params)
+    @chart.save
   end
 
   def edit
@@ -39,7 +41,7 @@ class ChartsController < ApplicationController
   end
 
   def chart_params
-    params.require(:chart).permit(:title, :row, :position, :width, :points)
+    params.require(:chart).permit(:title, :row, :position, :width, :points, :parent_type, :parent_id)
   end
 end
 

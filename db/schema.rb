@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2022_07_21_101204) do
     t.integer "row", default: 1
     t.integer "position", default: 1
     t.string "width"
-    t.string "points"
+    t.string "points", default: ""
     t.string "parent_type"
     t.integer "parent_id"
     t.datetime "created_at", precision: 6, null: false

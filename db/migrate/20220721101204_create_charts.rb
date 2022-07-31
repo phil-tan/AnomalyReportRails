@@ -5,7 +5,7 @@ class CreateCharts < ActiveRecord::Migration[6.1]
       t.integer :row, :default => 1
       t.integer :position, :default => 1
       t.string :width
-      t.string :points
+      t.string :points, :default => ''
       t.string :parent_type
       t.integer :parent_id
 

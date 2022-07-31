@@ -40,7 +40,7 @@ const ChartCard = ({ chart, charts_data, site_points_list}) => {
         <div><strong>{chart.title}</strong></div>
         <div>
           <ShowModalButton chart={chart} charts_data={charts_data} />
-          <EditButton chart={chart} site_points_list={site_points_list} />
+          <EditButton button_name='Edit' chart={chart} site_points_list={site_points_list} />
         </div>
       </div>
           <Chart chart={chart} charts_data={charts_data} />

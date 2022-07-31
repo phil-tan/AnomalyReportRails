@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import EditForm from './EditForm';
 
 
-const EditButton = ({chart, site_points_list}) => {
+const EditButton = ({button_name, chart, site_points_list, new_or_edit}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -12,7 +12,7 @@ const EditButton = ({chart, site_points_list}) => {
   return (
     <>
       <button className='btn btn-sm btn-secondary open-chart-btn' onClick={handleShow}>
-        Edit
+        {button_name}
       </button>
       <Modal className='chart-edit' show={show} onHide={handleClose}>
         <Modal.Header closeButton>
