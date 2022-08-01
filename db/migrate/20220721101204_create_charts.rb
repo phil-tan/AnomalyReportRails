@@ -8,6 +8,7 @@ class CreateCharts < ActiveRecord::Migration[6.1]
       t.string :points, :default => ''
       t.string :parent_type
       t.integer :parent_id
+      t.string :plot_type, :default => 'line'
 
       t.timestamps
     end

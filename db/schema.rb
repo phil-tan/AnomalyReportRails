@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_21_101204) do
+ActiveRecord::Schema.define(version: 2022_07_31_054238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 2022_07_21_101204) do
     t.index ["site_id"], name: "index_buildings_on_site_id"
   end
 
+  create_table "chart_rows", force: :cascade do |t|
+    t.string "row_number"
+    t.string "title"
+    t.string "height", default: "40vh"
+    t.string "parent_type"
+    t.integer "parent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "charts", force: :cascade do |t|
     t.string "title"
     t.integer "row", default: 1
@@ -34,6 +44,7 @@ ActiveRecord::Schema.define(version: 2022_07_21_101204) do
     t.string "points", default: ""
     t.string "parent_type"
     t.integer "parent_id"
+    t.string "plot_type", default: "line"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

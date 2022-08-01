@@ -36,6 +36,7 @@ user_3 = User.create!(
   password_confirmation: "password",
 )
 
+
 sites_table = CSV.parse(File.read("db/sites_seed.csv"), headers: true)
 
 sites_table.each do |row|
@@ -57,6 +58,11 @@ buildings_table.each do |row|
     # image: row['image_url'],
     site_id: Site.find_by(short_name: row['parent_site']).id
   )
+  ChartRow.create!(parent_type: 'building', parent_id: new_building.id, height: '40vh', row_number: 1)
+  ChartRow.create!(parent_type: 'building', parent_id: new_building.id, height: '40vh', row_number: 2)
+  ChartRow.create!(parent_type: 'building', parent_id: new_building.id, height: '40vh', row_number: 3)
+  ChartRow.create!(parent_type: 'building', parent_id: new_building.id, height: '40vh', row_number: 4)
+  ChartRow.create!(parent_type: 'building', parent_id: new_building.id, height: '40vh', row_number: 5)
   p new_building.name
 end
 

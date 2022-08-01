@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/sites', to: 'sites#create'
   get '/sites/:id/edit', to: 'sites#edit'
   patch '/sites/:id', to: 'sites#update'
-  delete '/sites/:id', to: 'sites#delete'
+  delete '/sites/:id', to: 'sites#destroy'
   get '/sites/:id/access', to: 'sites#access'
   get '/sites/:id/access/edit', to: 'sites#access_edit'
   patch '/sites/:id/access', to: 'sites#index'

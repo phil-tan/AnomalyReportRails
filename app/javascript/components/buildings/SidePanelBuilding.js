@@ -1,4 +1,5 @@
 import React from 'react'
+import NewEditModal from './NewEditModal'
 
 
 export default function({ building }) {
@@ -12,8 +13,9 @@ export default function({ building }) {
         <div className='side-panel'>
             <h5>{  building.name  }</h5>
             { img_html }
-            <a href='#'>Edit</a>
-
+            <div className='text-end'>
+              <NewEditModal site={{}} building={building} button_name='Edit' button_class='btn btn-secondary btn-sm' new_or_edit='Edit' />
+            </div>
         </div>
     )
 }

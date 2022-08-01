@@ -4,22 +4,24 @@ import { MultiSelect } from "react-multi-select-component";
 import { useEffect } from 'react';
 
 
-const EditForm = ({chart, site_points_list, new_or_edit}) => {
+const EditForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
   const [title, setTitle] = useState(chart.title)
   const [row, setRow] = useState(chart.row)
   const [position, setPosition] = useState(chart.position)
   const [width, setWidth] = useState(chart.width)
   const [selected, setSelected] = useState([]);
 
-  useEffect(() => {
-    const points_array = chart.points.split(',')
-    let selected_points = []
-    points_array.forEach(point => {
-      selected_points.push({'label': point, 'value': point})
-    })
-    setSelected(selected_points)
-    console.log(selected_points)
-  }, [])
+  if(new_or_edit === 'Edit'){
+    useEffect(() => {
+      const points_array = chart.points.split(',')
+      let selected_points = []
+      points_array.forEach(point => {
+        selected_points.push({'label': point, 'value': point})
+      })
+      setSelected(selected_points)
+      console.log(selected_points)
+    }, [])
+  }
 
   const onSubmit = (e) => {
     console.log(e.target.elements)
@@ -35,11 +37,11 @@ const EditForm = ({chart, site_points_list, new_or_edit}) => {
     new_chart.points = points.toString();
     console.log(new_chart.points)
 
-    let req_method = 'PATCH'
-    let req_url = `http://localhost:3000/charts/${chart.id}`
-    if(new_or_edit === 'new'){
-      req_method = 'POST'
-      req_url = `http://localhost:3000/buildings/${chart.parent_id}/charts`
+    let req_method = 'POST'
+    let req_url = `http://localhost:3000/buildings/${chart.parent_id}/charts`
+    if(new_or_edit === 'Edit'){
+      req_method = 'PATCH'
+      req_url = `http://localhost:3000/charts/${chart.id}`
     }
 
     fetch(req_url, {
@@ -51,17 +53,19 @@ const EditForm = ({chart, site_points_list, new_or_edit}) => {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log('Success:', data);
+      console.log('Success:', data)
     })
     .catch((error) => {
-      console.error('Error:', error);
+      console.error('Error:', error)
     });
+    if(new_or_edit == 'New'){AddChart(new_chart)}
   }
 
   const onDeleteClick = (e) => {
     fetch(`http://localhost:3000/charts/${chart.id}`, { method: 'DELETE' })
-    .then(() => console.log('chart deleted'));
-    window.location.reload(false)
+    .then(() => {
+      console.log('chart deleted')
+      window.location.reload(false)});
   }
 
   let options = []
@@ -74,7 +78,6 @@ const EditForm = ({chart, site_points_list, new_or_edit}) => {
 
    return (
       <div className='container'>
-         <h3>{ chart.title }</h3>
       <form onSubmit={onSubmit}>
       <div className='row'>
         <div className='col-6'>
@@ -101,8 +104,8 @@ const EditForm = ({chart, site_points_list, new_or_edit}) => {
         </div>
          <hr></hr>
          <div className='text-end'>
-            <input type='submit' value='Update' className='btn btn-lg btn-primary' />
-            <button className='btn btn-lg btn-danger' onClick={onDeleteClick}>Delete</button>
+            <input type='submit' value={new_or_edit==='Edit' ? 'Update' : 'Add'} className='btn btn-lg btn-primary' />
+            {new_or_edit=='Edit' ? <button className='btn btn-lg btn-danger' onClick={onDeleteClick}>Delete</button> : <></>}
          </div>
       </form>
       </div>

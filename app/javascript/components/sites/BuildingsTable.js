@@ -1,52 +1,23 @@
 import React from 'react'
+import DataGrid from 'react-data-grid';
 
-const TableHead = () => {
+const BuildingTable = ({site, site_buildings, charts_data}) => {
 
-return (
-    <thead>
-    <tr>
-      <th className="th-sm">Name
-      </th>
-      <th className="th-sm">Short Name
-      </th>
-      <th className="th-sm">Rating
-      </th>
-    </tr>
-  </thead>
-    )
-}
+  const columns = [
+    { key: 'id', name: 'ID' },
+    { key: 'title', name: 'Title' }
+  ];
 
+  let rows = []
+  site_buildings.forEach(building=> {
+    rows.push({id: building.short_name, title: building.name})
+  });
 
-const BuildingTable = ({ buildings }) => {
-    const script = document.createElement("script");
-    script.src = "./script_table";
-    script.async = true;
-    document.body.appendChild(script);
-
-    const TableRow = ({ building }) => {
-        return (
-            <tr><td><a href={ `/buildings/${building.id}` }>{ building.name }</a></td><td>bcode</td><td>rating</td></tr>
-        )
-    }
-
-    const TableBody = ({ buildings }) => {
-        return (
-            <>
-            { buildings.map((building) => <TableRow building={building} />) }
-            </>
-        )
-    }
-    
     return(
-    <>
-    <table id="dtBasicExample" fontSize='5px' className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
-        < TableHead />
-        <tbody>
-            <TableBody buildings={ buildings }/>
-        </tbody>
-    </table>
 
-    </>
+      <>
+
+      </>
     )
 
 

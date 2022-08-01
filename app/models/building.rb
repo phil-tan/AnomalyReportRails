@@ -7,6 +7,10 @@ class Building < ApplicationRecord
     Chart.where(parent_type: 'building').where("parent_id = ?", id)
   end
 
+  def chart_rows
+    ChartRow.where(parent_type: 'building').where("parent_id = ?", id)
+  end
+
   def charts_data(table)
     # table = CSV.parse(File.read("app/assets/datasets/site_#{site_id}_energy.csv"), headers: true)
     chart_table = {'dt' => table['dt']}

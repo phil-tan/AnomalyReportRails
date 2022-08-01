@@ -10,7 +10,7 @@ export default function ShowModalButton({chart, charts_data}) {
 
   return (
     <>
-      <button className='btn btn-sm btn-info open-chart-btn' onClick={handleShow}>
+      <button className='btn btn-sm btn-outline-primary' onClick={handleShow}>
         Open
       </button>
 
@@ -24,9 +24,6 @@ export default function ShowModalButton({chart, charts_data}) {
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>

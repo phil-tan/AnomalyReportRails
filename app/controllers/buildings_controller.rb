@@ -1,6 +1,7 @@
 require 'date'
 
 class BuildingsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
   end
 
@@ -14,15 +15,22 @@ class BuildingsController < ApplicationController
   end
 
   def create
+    @building = Building.new(building_params)
+    @building.site_id = params[:id]
+    @building.save
   end
 
   def edit
   end
 
   def update
+    @building = Building.find(params[:id])
+    @building.update(building_params)
   end
 
   def destroy
+    @building = Building.find(params[:id])
+    @building.destroy
   end
 
   def report
@@ -45,6 +53,11 @@ class BuildingsController < ApplicationController
         end
       end
     end
-    render json: building.charts_data(table_by_cols)
+    # render json: building.charts_data(table_by_cols)
+    render json: table_by_cols
+  end
+
+  def building_params
+    params.require(:building).permit(:name, :short_name, :image, :access_list)
   end
 end

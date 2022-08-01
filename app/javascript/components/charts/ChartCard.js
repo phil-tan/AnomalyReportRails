@@ -1,7 +1,7 @@
 import React from 'react';
 import Plot from 'react-plotly.js'
 import ShowModalButton from './ShowModalButton';
-import Chart from './Chart';
+import Chart from './Chart'
 import EditButton from './EditButton';
 
 
@@ -40,7 +40,8 @@ const ChartCard = ({ chart, charts_data, site_points_list}) => {
         <div><strong>{chart.title}</strong></div>
         <div>
           <ShowModalButton chart={chart} charts_data={charts_data} />
-          <EditButton button_name='Edit' chart={chart} site_points_list={site_points_list} />
+          <EditButton button_name='Edit' button_class='btn btn-sm btn-outline-secondary'
+            chart={chart} site_points_list={site_points_list} new_or_edit="Edit" />
         </div>
       </div>
           <Chart chart={chart} charts_data={charts_data} />

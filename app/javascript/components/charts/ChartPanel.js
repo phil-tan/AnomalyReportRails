@@ -1,7 +1,6 @@
 import React from 'react';
-import Chart from './Chart'
 import ChartCard from './ChartCard';
-import { useEffect } from 'react';
+
 
 const ChartPanel = ({ charts, charts_data, site_points_list }) => {
 

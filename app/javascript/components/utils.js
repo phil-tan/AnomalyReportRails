@@ -45,3 +45,18 @@ export const postObj = async (obj, pageUrl) => {
   const obj_id = await res.json()
   return obj_id
 }
+
+export const sort_list = (obj) => {
+  obj.sort((a, b) => {
+    let fa = a.name.toLowerCase(),
+        fb = b.name.toLowerCase();
+    if (fa < fb) {
+        return -1;
+    }
+    if (fa > fb) {
+        return 1;
+    }
+    return 0;
+  });
+  return obj
+}
