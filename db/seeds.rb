@@ -58,7 +58,7 @@ buildings_table.each do |row|
     # image: row['image_url'],
     site_id: Site.find_by(short_name: row['parent_site']).id
   )
-  ChartRow.create!(parent_type: 'building', parent_id: new_building.id, height: '40vh', row_number: 1)
+  ChartRow.create!(parent_type: 'building', parent_id: new_building.id, height: '20vh', row_number: 1)
   ChartRow.create!(parent_type: 'building', parent_id: new_building.id, height: '40vh', row_number: 2)
   ChartRow.create!(parent_type: 'building', parent_id: new_building.id, height: '40vh', row_number: 3)
   ChartRow.create!(parent_type: 'building', parent_id: new_building.id, height: '40vh', row_number: 4)
@@ -75,6 +75,7 @@ charts_table.each do |row|
     title: row["title"],
     points: row['points'],
     row: row['row'],
+    width: row['width'],
     position: row['position'],
     plot_type: row['plot_type'],
     plot_options: row['plot_options']

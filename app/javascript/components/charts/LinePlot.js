@@ -6,25 +6,37 @@ const LinePlot = ({ chart, charts_data, if_modal}) => {
 
   const data = charts_data
   const points = chart.points.split(",")
+  const colors = {'CHW': 'rgb(55, 128, 191)', 'STM': '#d62728', 'ELE': '#FFD700'}
+
   let plot_data = []
   if(data){
       // Object.keys(data).forEach((col)=> {
         points.forEach((point)=> {
-            if(data[point]){
-            const trace = {
-              // x: Object.keys(data[col]) ,
-              // y: Object.values(data[col]).map(Number),
-              x: data['dt'],
-              y: data[point],
-              type: 'scatter',
-              mode: 'lines+markers',
-              name: point,
-              marker: {size: 2},
-
-            }
-            plot_data.push(trace)
+          let line_color;
+          if(point.includes('_STM')){
+            line_color = colors['STM']
+          }else if(point.includes('_ELE')){
+            line_color = colors['ELE']
+          }else{
+            line_color = colors['CHW']
           }
+
+          if(data[point]){
+          const trace = {
+            // x: Object.keys(data[col]) ,
+            // y: Object.values(data[col]).map(Number),
+            x: data['dt'],
+            y: data[point],
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: point,
+            marker: {size: 2},
+            line: {color: line_color}
+
+          }
+          plot_data.push(trace)
         }
+      }
       )
   }
 

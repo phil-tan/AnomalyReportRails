@@ -8,6 +8,7 @@ class BuildingsController < ApplicationController
   def show
     @building = Building.find(params[:id])
     @building_charts = @building.charts
+    @building_chart_rows = @building.chart_rows
     @site_points_list = @building.site.points_list
   end
 

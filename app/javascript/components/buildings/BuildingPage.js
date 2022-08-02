@@ -7,8 +7,9 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import EditButton from '../charts/EditButton';
 
 
-const BuildingPage = ({building, building_charts, site_points_list}) => {
+const BuildingPage = ({building, building_charts, building_chart_rows, site_points_list}) => {
   const [charts_data, setChartsData] = useState({})
+  const [chartRows, setChartRows] = useState(building_chart_rows)
   const [buildingCharts, setCharts] = useState(building_charts)
   const [endDate, setEndDate] = useState('2019-08-10')
   const [startDate, setStartDate] = useState('2018-07-01')
@@ -76,7 +77,7 @@ const BuildingPage = ({building, building_charts, site_points_list}) => {
               </div>
             </div>
 
-          <ChartPanel charts={ buildingCharts } charts_data={charts_data} site_points_list={site_points_list}/>
+          <ChartPanel charts={ buildingCharts } chart_rows = {chartRows} charts_data={charts_data} site_points_list={site_points_list}/>
           </div>
       </div>
 

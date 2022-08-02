@@ -26,12 +26,14 @@ const EditForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
   }
 
   const onSubmit = (e) => {
-    console.log(e.target.elements)
+    e.preventDefault();
     let new_chart = chart
     new_chart.title = title
     new_chart.row = row
     new_chart.width = width
     new_chart.position = position
+    new_chart.plot_type = plotType
+    new_chart.plot_options = plotOptions
     let points = []
     selected.forEach(opt =>{
       points.push(opt.value)
@@ -55,10 +57,16 @@ const EditForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log('Success:', data)
+      console.log('Success:', data);
+      setTimeout(() => {
+        window.location.reload(false)
+      }, 1000);
     })
     .catch((error) => {
       console.error('Error:', error)
+      setTimeout(() => {
+        window.location.reload(false)
+      }, 1000);
     });
     if(new_or_edit == 'New'){AddChart(new_chart)}
   }
@@ -96,10 +104,10 @@ const EditForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
           <label>Width: 1/4, 1/3, 1/2, 2/3, 3/4, full</label><input className='form-control' type='text' value={width} onChange={(e)=>setWidth(e.target.value)}/>
         </div>
         <div className='form-group'>
-          <label>Plot Type</label><input className='form-control' type='text' value={width} onChange={(e)=>setPlotType(e.target.value)}/>
+          <label>Plot Type</label><input className='form-control' type='text' value={plotType} onChange={(e)=>setPlotType(e.target.value)}/>
         </div>
         <div className='form-group'>
-          <label>Options</label><input className='form-control' type='text' value={width} onChange={(e)=>setPlotOptions(e.target.value)}/>
+          <label>Options</label><input className='form-control' type='text' value={plotOptions} onChange={(e)=>setPlotOptions(e.target.value)}/>
         </div>
         </div>
         <div className='col-6'>

@@ -38,7 +38,7 @@ const ChartCard = ({ chart, charts_data, site_points_list}) => {
     <div className='chart-card-wrap' style={{width: chart_width}}>
     <div className='chart-card'>
       <div className='chart-menu'>
-        <div><strong>{chart.title}</strong></div>
+        <div className='text-left overflow-hidden'><strong>{chart.title}</strong></div>
         <div>
           <ShowModalButton chart={chart} charts_data={charts_data} />
           <EditButton button_name='Edit' button_class='btn btn-sm btn-outline-secondary'

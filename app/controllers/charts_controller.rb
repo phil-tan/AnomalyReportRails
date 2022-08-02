@@ -41,7 +41,8 @@ class ChartsController < ApplicationController
   end
 
   def chart_params
-    params.require(:chart).permit(:title, :row, :position, :width, :points, :parent_type, :parent_id)
+    params.require(:chart).permit(:title, :row, :position, :width,
+          :points, :parent_type, :parent_id, :plot_type, :plot_options)
   end
 end
 
