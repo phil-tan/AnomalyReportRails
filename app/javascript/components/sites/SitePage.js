@@ -8,6 +8,7 @@ import SiteDash from './SiteDash';
 import BuildingCard from '../buildings/BuildingCard';
 import NewEditModal from '../buildings/NewEditModal';
 import { sort_list } from '../utils';
+import { Dropdown } from 'react-bootstrap';
 
 const SitePage = ({site, site_buildings}) => {
   const [key, setKey] = useState('buildings');
@@ -23,9 +24,16 @@ const SitePage = ({site, site_buildings}) => {
           <div className='col-10'>
           <Tabs id="controlled-tab-example" activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
               <Tab eventKey="buildings" title="Buildings">
-                <div className='text-start'>
-                  <NewEditModal site={site} building={{}} button_name='Add Building' button_class='btn btn-primary' new_or_edit='New' />
-                  <a href={`/sites/${site.id}/data_files`}>Upload Data</a>
+                <div className='text-start pl-2'>
+                <Dropdown>
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                    Tools
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item><NewEditModal site={site} building={{}} button_name='Add Building' new_or_edit='New' /></Dropdown.Item>
+                    <Dropdown.Item href={`/sites/${site.id}/data_files`}>Upload Data</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
                 </div>
                 <div className="d-flex flex-wrap">
                   {site_buildings.map((building)=>(
