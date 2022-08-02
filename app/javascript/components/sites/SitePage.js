@@ -11,17 +11,6 @@ import { sort_list } from '../utils';
 
 const SitePage = ({site, site_buildings}) => {
   const [key, setKey] = useState('buildings');
-  // site_buildings.sort((a, b) => {
-  //     let fa = a.name.toLowerCase(),
-  //         fb = b.name.toLowerCase();
-  //     if (fa < fb) {
-  //         return -1;
-  //     }
-  //     if (fa > fb) {
-  //         return 1;
-  //     }
-  //     return 0;
-  // });
   site_buildings = sort_list(site_buildings)
 
   if(Object.keys(site).length > 0){
@@ -36,6 +25,7 @@ const SitePage = ({site, site_buildings}) => {
               <Tab eventKey="buildings" title="Buildings">
                 <div className='text-start'>
                   <NewEditModal site={site} building={{}} button_name='Add Building' button_class='btn btn-primary' new_or_edit='New' />
+                  <a href={`/sites/${site.id}/data_files`}>Upload Data</a>
                 </div>
                 <div className="d-flex flex-wrap">
                   {site_buildings.map((building)=>(

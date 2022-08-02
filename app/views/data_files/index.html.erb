@@ -1,0 +1,51 @@
+<div class="container">
+<% if !flash[:notice].blank? %>
+   <div>
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
+<br>
+
+<div class='text-start'>
+
+<span><h4><%=@site.name%></h4></span>  <%= link_to "Back to Site", site_path(@site)%>
+
+</div>
+<br>
+
+<div>
+   <%= form_for @data_file, html: { multipart: true } do |f| %>
+      <%= f.label :attachment %>
+      <%= f.file_field :attachment %>
+      <br>
+      <br>
+      <%= f.submit "Upload Data"%>
+   <% end %>
+</div>
+
+<table class='table'>
+   <thead>
+      <tr>
+         <th>File Name</th>
+         <th>Download Link</th>
+         <th>Action</th>
+         <th>Uploaded</th>
+      </tr>
+   </thead>
+
+   <tbody>
+      <% @data_files.each do |data_file| %>
+
+         <tr>
+            <td><%= data_file.name %></td>
+            <td><%= link_to "Download", data_file.attachment_url %></td>
+            <td><%= link_to "Delete",  data_file_path(@site, data_file), method: :delete, confirm: "Are you sure you want to delete #{data_file.name}?" %></td>
+            <td><%=data_file.created_at %>
+         </tr>
+
+      <% end %>
+   </tbody>
+
+</table>
+</div>

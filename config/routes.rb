@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'data_files/index'
+  get 'data_files/new'
+  get 'data_files/create'
+  get 'data_files/destroy'
   root to: 'pages#home'
   devise_for :users
 
@@ -37,4 +41,9 @@ Rails.application.routes.draw do
   patch '/charts/:id', to: 'charts#update'
   delete '/charts/:id', to: 'charts#destroy'
 
+  # data_file upload
+  get '/sites/:id/data_files', to: 'data_files#index', as: 'data_files'
+  get '/sites/:id/data_files/new', to: 'data_files#new', as: 'new_data_file'
+  post '/sites/:id/data_files', to: 'data_files#create'
+  delete '/sites/:site_id/data_files/:id', to: 'data_files#destroy', as: 'data_file'
 end
