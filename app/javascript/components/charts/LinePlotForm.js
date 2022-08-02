@@ -4,7 +4,7 @@ import { MultiSelect } from "react-multi-select-component";
 import { useEffect } from 'react';
 
 
-const EditForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
+const LinePlotForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
   const [title, setTitle] = useState(chart.title)
   const [row, setRow] = useState(chart.row)
   const [position, setPosition] = useState(chart.position)
@@ -27,6 +27,7 @@ const EditForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log('submitting')
     let new_chart = chart
     new_chart.title = title
     new_chart.row = row
@@ -129,4 +130,4 @@ const EditForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
 
 }
 
-export default EditForm
+export default LinePlotForm

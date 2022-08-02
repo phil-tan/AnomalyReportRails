@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import EditForm from './EditForm';
-
+import LinePlotForm from './LinePlotForm';
+import KpiForm from './KpiForm';
 
 const AddEditButton = ({button_name, button_class, plot_type, building, chart, site_points_list, new_or_edit, AddChart}) => {
   const [show, setShow] = useState(false);
@@ -16,21 +16,33 @@ const AddEditButton = ({button_name, button_class, plot_type, building, chart, s
     new_chart.position = 100
     new_chart.parent_id = building.id
     new_chart.parent_type = 'building'
+    new_chart.plot_type = plot_type
+    new_chart.plot_options = ''
     chart = new_chart
+  }
+
+  let form;
+  if(chart.plot_type==='line'){
+    form =  <LinePlotForm chart={chart} building={building}
+                  site_points_list={site_points_list} new_or_edit={new_or_edit} AddChart={AddChart}/>
+  }else if(chart.plot_type=='kpi'){
+    form = <KpiForm chart={chart} building={building}
+              site_points_list={site_points_list} new_or_edit={new_or_edit} AddChart={AddChart}/>
   }
 
   return (
     <>
-      <button className={button_class} onClick={handleShow}>
+    <div style={{width:'100%'}} onClick={handleShow}>
+      <span className={button_class}>
         {button_name}
-      </button>
+      </span>
+    </div>
       <Modal className='chart-edit' show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{`${new_or_edit} Building`}</Modal.Title>
+          <Modal.Title>{`${new_or_edit} Chart`}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EditForm chart={chart} building={building} plot_type={plot_type}
-                site_points_list={site_points_list} new_or_edit={new_or_edit} AddChart={AddChart}/>
+            {form}
         </Modal.Body>
       </Modal>
     </>

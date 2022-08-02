@@ -63,17 +63,20 @@ const BuildingPage = ({building, building_charts, building_chart_rows, site_poin
                             startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate}/>
               </div>
               <div className='tool-bar'>
-                <AddEditButton button_name='Add Chart' button_class='btn btn-primary btn-md'
+              <AddEditButton plot_type='line' button_name='Line' button_class=''
                     building={building} site_points_list={site_points_list} new_or_edit='New' AddChart={AddChart}/>
-                {/* <Dropdown>
-                  <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Tools
+
+                <Dropdown>
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                    Add Chart
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={AddChart}>Add Chart</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Edit Building</Dropdown.Item>
+                    <Dropdown.Item ><AddEditButton plot_type='line' button_name='Line' button_class=''
+                    building={building} site_points_list={site_points_list} new_or_edit='New' AddChart={AddChart}/></Dropdown.Item>
+                    <Dropdown.Item><AddEditButton plot_type='kpi' button_name='KPI' button_class=''
+                    building={building} site_points_list={site_points_list} new_or_edit='New' AddChart={AddChart}/></Dropdown.Item>
                   </Dropdown.Menu>
-                </Dropdown> */}
+                </Dropdown>
               </div>
             </div>
 
