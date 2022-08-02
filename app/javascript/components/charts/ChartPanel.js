@@ -4,6 +4,7 @@ import ChartCard from './ChartCard';
 
 const ChartPanel = ({ charts, charts_data, site_points_list }) => {
 
+    console.log(charts_data)
     return (
         <div className='chart-panel'>
         {[

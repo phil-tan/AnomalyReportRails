@@ -7,6 +7,7 @@ import EditButton from './EditButton';
 
 const ChartCard = ({ chart, charts_data, site_points_list}) => {
 
+  console.log(charts_data)
   let chart_width = ''
 
   switch(chart.width) {

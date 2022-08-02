@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2022_08_01_134706) do
     t.string "parent_type"
     t.integer "parent_id"
     t.string "plot_type", default: "line"
+    t.string "plot_options", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

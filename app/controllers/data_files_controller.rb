@@ -21,13 +21,13 @@ class DataFilesController < ApplicationController
     @data_file.name = @data_file.attachment_url.split('/')[-1]
     @data_file.site_id = @site.id
     if @data_file.save
-      table = CSV.read("public#{@data_file.attachment_url}", headers: true, converters: :numeric)
-      CSV.open("app/assets/datasets/site_6_energy.csv", 'w') do |csv|
-        csv << table.headers
-        table.each do |row|
-          csv << row
-        end
-      end
+      # table = CSV.read("public#{@data_file.attachment_url}", headers: true, converters: :numeric)
+      # CSV.open("app/assets/datasets/site_#{@site.id}_energy.csv", 'w') do |csv|
+      #   csv << table.headers
+      #   table.each do |row|
+      #     csv << row
+      #   end
+      # end
       redirect_to data_files_path(@site), notice: "Successfully uploaded."
     else
       render "index"

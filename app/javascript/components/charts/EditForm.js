@@ -9,6 +9,8 @@ const EditForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
   const [row, setRow] = useState(chart.row)
   const [position, setPosition] = useState(chart.position)
   const [width, setWidth] = useState(chart.width)
+  const [plotType, setPlotType] = useState(chart.plot_type)
+  const [plotOptions, setPlotOptions] = useState(chart.plot_options)
   const [selected, setSelected] = useState([]);
 
   if(new_or_edit === 'Edit'){
@@ -92,6 +94,12 @@ const EditForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
         </div>
         <div className='form-group'>
           <label>Width: 1/4, 1/3, 1/2, 2/3, 3/4, full</label><input className='form-control' type='text' value={width} onChange={(e)=>setWidth(e.target.value)}/>
+        </div>
+        <div className='form-group'>
+          <label>Plot Type</label><input className='form-control' type='text' value={width} onChange={(e)=>setPlotType(e.target.value)}/>
+        </div>
+        <div className='form-group'>
+          <label>Options</label><input className='form-control' type='text' value={width} onChange={(e)=>setPlotOptions(e.target.value)}/>
         </div>
         </div>
         <div className='col-6'>

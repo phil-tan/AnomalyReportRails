@@ -75,7 +75,9 @@ charts_table.each do |row|
     title: row["title"],
     points: row['points'],
     row: row['row'],
-    position: row['position']
+    position: row['position'],
+    plot_type: row['plot_type'],
+    plot_options: row['plot_options']
   )
   p new_chart.title
 end

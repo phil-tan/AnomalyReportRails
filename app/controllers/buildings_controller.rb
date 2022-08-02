@@ -37,6 +37,7 @@ class BuildingsController < ApplicationController
   end
 
   def send_data
+    p "in send data"
     building = Building.find(params[:id])
     url_args = params[:url_args].split('&')
     start_date = url_args[1]

@@ -19,6 +19,8 @@ const BuildingPage = ({building, building_charts, site_points_list}) => {
     fetch(`http://localhost:3000/buildings/${building.id}/data/start_date&${startDate}&end_date&${endDate}`)
     .then(response => response.json())
     .then((data) => {
+      console.log(building)
+      console.log(data)
       setChartsData(data)
     })
   }, [])
@@ -45,6 +47,7 @@ const BuildingPage = ({building, building_charts, site_points_list}) => {
     charts_data['dt'] = dt
   }
 
+  console.log(charts_data)
 
   return (
       <div className='row'>

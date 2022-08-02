@@ -9,6 +9,7 @@ class CreateCharts < ActiveRecord::Migration[6.1]
       t.string :parent_type
       t.integer :parent_id
       t.string :plot_type, :default => 'line'
+      t.string :plot_options, :default => ''
 
       t.timestamps
     end
