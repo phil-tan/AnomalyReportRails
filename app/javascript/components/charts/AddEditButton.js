@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import EditForm from './EditForm';
 
 
-const EditButton = ({button_name, button_class, building, chart, site_points_list, new_or_edit, AddChart}) => {
+const AddEditButton = ({button_name, button_class, plot_type, building, chart, site_points_list, new_or_edit, AddChart}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -29,11 +29,12 @@ const EditButton = ({button_name, button_class, building, chart, site_points_lis
           <Modal.Title>{`${new_or_edit} Building`}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EditForm chart={chart} building={building} site_points_list={site_points_list} new_or_edit={new_or_edit} AddChart={AddChart}/>
+          <EditForm chart={chart} building={building} plot_type={plot_type}
+                site_points_list={site_points_list} new_or_edit={new_or_edit} AddChart={AddChart}/>
         </Modal.Body>
       </Modal>
     </>
   );
 }
 
-export default EditButton
+export default AddEditButton

@@ -20,11 +20,12 @@
           <%= link_to "Messages", "#", class: "nav-link" %>
         <%# </li> %>
         <li class="nav-item dropdown" role="button">
-          <%= image_tag "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= image_tag "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Account details", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
+            </div>
+          </li>
       <% else %>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>

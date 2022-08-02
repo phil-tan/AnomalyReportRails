@@ -2,7 +2,7 @@ import React from 'react';
 import Plot from 'react-plotly.js'
 import ShowModalButton from './ShowModalButton';
 import Chart from './Chart'
-import EditButton from './EditButton';
+import AddEditButton from './AddEditButton';
 
 
 const ChartCard = ({ chart, charts_data, site_points_list}) => {
@@ -41,7 +41,7 @@ const ChartCard = ({ chart, charts_data, site_points_list}) => {
         <div className='text-left overflow-hidden'><strong>{chart.title}</strong></div>
         <div>
           <ShowModalButton chart={chart} charts_data={charts_data} />
-          <EditButton button_name='Edit' button_class='btn btn-sm btn-outline-secondary'
+          <AddEditButton button_name='Edit' button_class='btn btn-sm btn-outline-secondary'
             chart={chart} site_points_list={site_points_list} new_or_edit="Edit" />
         </div>
       </div>
