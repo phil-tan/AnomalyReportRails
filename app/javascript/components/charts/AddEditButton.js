@@ -16,8 +16,8 @@ const AddEditButton = ({button_name, button_class, plot_type, building, chart, s
     new_chart.position = 100
     new_chart.parent_id = building.id
     new_chart.parent_type = 'building'
-    new_chart.plot_type = plot_type
-    new_chart.plot_options = ''
+    new_chart.plot_type = 'line'
+    new_chart.plot_options = {}
     chart = new_chart
   }
 
@@ -32,11 +32,9 @@ const AddEditButton = ({button_name, button_class, plot_type, building, chart, s
 
   return (
     <>
-    <div style={{width:'100%'}} onClick={handleShow}>
-      <span className={button_class}>
+      <button className={button_class} onClick={handleShow}>
         {button_name}
-      </span>
-    </div>
+      </button>
       <Modal className='chart-edit' show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{`${new_or_edit} Chart`}</Modal.Title>

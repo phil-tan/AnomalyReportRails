@@ -68,8 +68,8 @@ const KpiForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
         window.location.reload(false)
       }, 1000);
     });
-    if(new_or_edit == 'New'){AddChart(new_chart)}
   }
+
 
   const onDeleteClick = (e) => {
     fetch(`http://localhost:3000/charts/${chart.id}`, { method: 'DELETE' })

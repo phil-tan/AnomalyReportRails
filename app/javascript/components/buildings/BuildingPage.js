@@ -5,6 +5,7 @@ import * as React from 'react';
 import DateSlider from '../_partials/DateSlider';
 import Dropdown from 'react-bootstrap/Dropdown';
 import AddEditButton from '../charts/AddEditButton';
+import AddSelect from '../charts/AddSelect';
 
 
 const BuildingPage = ({building, building_charts, building_chart_rows, site_points_list}) => {
@@ -63,20 +64,10 @@ const BuildingPage = ({building, building_charts, building_chart_rows, site_poin
                             startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate}/>
               </div>
               <div className='tool-bar'>
-              <AddEditButton plot_type='line' button_name='Line' button_class=''
-                    building={building} site_points_list={site_points_list} new_or_edit='New' AddChart={AddChart}/>
-
-                <Dropdown>
-                  <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                    Add Chart
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item ><AddEditButton plot_type='line' button_name='Line' button_class=''
-                    building={building} site_points_list={site_points_list} new_or_edit='New' AddChart={AddChart}/></Dropdown.Item>
-                    <Dropdown.Item><AddEditButton plot_type='kpi' button_name='KPI' button_class=''
-                    building={building} site_points_list={site_points_list} new_or_edit='New' AddChart={AddChart}/></Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+                {/* <AddEditButton button_name='Add Chart' button_class='btn btn-primary btn-md'
+                    building={building} site_points_list={site_points_list} new_or_edit='New' AddChart={AddChart}/> */}
+                <AddSelect button_class='btn btn-primary' site={{}} building={building}
+                    parent_type='building' site_points_list={site_points_list} />
               </div>
             </div>
 
