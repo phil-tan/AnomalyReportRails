@@ -7,7 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
 
-const AddSelect = ({button_class, site, building, parent_type, site_points_list}) => {
+const AddSelect = ({button_class, site, building, parent_type, site_points_list, AddChart}) => {
   const [show, setShow] = useState(false);
   const [formType, setForm] = useState('line')
   // const [form, setForm] = useState({})
@@ -16,7 +16,7 @@ const AddSelect = ({button_class, site, building, parent_type, site_points_list}
 
 
   let new_chart = {}
-  new_chart.row = 1
+  new_chart.row = 2
   new_chart.title = "New Chart"
   new_chart.position = 100
   new_chart.parent_type = parent_type
@@ -45,10 +45,11 @@ const AddSelect = ({button_class, site, building, parent_type, site_points_list}
   let form;
   if(formType==='line'){
     form =  <LinePlotForm chart={new_chart} building={building}
-                  site_points_list={site_points_list} new_or_edit='New'/>
+                  site_points_list={site_points_list} new_or_edit='New'
+                  handleClose={handleClose} AddChart={AddChart}/>
   }else if(formType==='kpi'){
     form = <KpiForm chart={new_chart} building={building}
-              site_points_list={site_points_list} new_or_edit='New'/>
+              site_points_list={site_points_list} new_or_edit='New' handleClose={handleClose}/>
   }
 
   return (

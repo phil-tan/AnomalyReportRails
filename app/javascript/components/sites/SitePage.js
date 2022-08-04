@@ -24,17 +24,12 @@ const SitePage = ({site, site_buildings}) => {
           <div className='col-10'>
           <Tabs id="controlled-tab-example" activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
               <Tab eventKey="buildings" title="Buildings">
-                <div className='text-start pl-2'>
-                <Dropdown>
-                  <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                    Tools
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item><NewEditModal site={site} building={{}} button_name='Add Building' new_or_edit='New' /></Dropdown.Item>
-                    <Dropdown.Item href={`/sites/${site.id}/data_files`}>Upload Data</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+                <div className="btn-group" role="group" aria-label="Basic example">
+                  <NewEditModal site={site} building={{}} button_name='Add Building' button_class='btn btn-primary' new_or_edit='New' />
+                  <a className='btn btn-secondary' href={`/sites/${site.id}/data_files`}>Upload Data</a>
                 </div>
+                <br></br>
+                <br></br>
                 <div className="d-flex flex-wrap">
                   {site_buildings.map((building)=>(
                     <BuildingCard building={building}/>

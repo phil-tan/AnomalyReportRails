@@ -4,7 +4,7 @@ import { MultiSelect } from "react-multi-select-component";
 import { useEffect } from 'react';
 
 
-const LinePlotForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
+const LinePlotForm = ({chart, site_points_list, new_or_edit, AddChart, handleClose}) => {
   const [title, setTitle] = useState(chart.title)
   const [row, setRow] = useState(chart.row)
   const [position, setPosition] = useState(chart.position)
@@ -49,6 +49,8 @@ const LinePlotForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
       req_url = `http://localhost:3000/charts/${chart.id}`
     }
 
+    handleClose();
+
     fetch(req_url, {
       method: req_method, // or 'PUT'
       headers: {
@@ -62,12 +64,14 @@ const LinePlotForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
       setTimeout(() => {
         window.location.reload(false)
       }, 1000);
+      // AddChart(new_chart);
     })
     .catch((error) => {
       console.error('Error:', error)
       setTimeout(() => {
         window.location.reload(false)
       }, 1000);
+      // AddChart(new_chart);
     });
 
   }

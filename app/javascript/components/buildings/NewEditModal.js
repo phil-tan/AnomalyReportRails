@@ -63,11 +63,9 @@ const NewEditModal = ({site, building, button_name, button_class, new_or_edit}) 
 
   return (
     <>
-      <div style={{width: '100%'}} onClick={handleShow}>
-        <a className={button_class} >
+        <a className={button_class} onClick={handleShow}>
           {button_name}
         </a>
-      </div>
       <Modal className='building-modal' show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{`${new_or_edit} Building`}</Modal.Title>

@@ -10,9 +10,11 @@ export default function ShowModalButton({chart, charts_data}) {
 
   return (
     <>
-      <button className='btn btn-sm btn-outline-primary' onClick={handleShow}>
-        Open
-      </button>
+      {/* <button > */}
+        <img className='img-link' src="https://icon-library.com/images/open-icon-png/open-icon-png-15.jpg"
+          style={{width: 25}} onClick={handleShow} cursor='pointer'
+        />
+      {/* </button> */}
 
       <Modal className='chart-modal' show={show} onHide={handleClose}>
         <Modal.Header closeButton>

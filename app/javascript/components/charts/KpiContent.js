@@ -13,10 +13,8 @@ const KpiContent = ({ chart, charts_data }) => {
   value = Math.round(value).toLocaleString('en-US')
 
   return (
-    <div className='d-flex flex-row align-items-center justify-content-center'>
-      <div className='text-center'>
-        <h1 align='center'>{ value }</h1>
-      </div>
+    <div className='kpi-content'>
+      <h1 align='center'>{ value }</h1>
     </div>
   )
 }

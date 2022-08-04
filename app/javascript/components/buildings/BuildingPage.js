@@ -3,8 +3,6 @@ import SidePanelBuilding from './SidePanelBuilding'
 import { useState, useEffect } from 'react'
 import * as React from 'react';
 import DateSlider from '../_partials/DateSlider';
-import Dropdown from 'react-bootstrap/Dropdown';
-import AddEditButton from '../charts/AddEditButton';
 import AddSelect from '../charts/AddSelect';
 
 
@@ -67,7 +65,7 @@ const BuildingPage = ({building, building_charts, building_chart_rows, site_poin
                 {/* <AddEditButton button_name='Add Chart' button_class='btn btn-primary btn-md'
                     building={building} site_points_list={site_points_list} new_or_edit='New' AddChart={AddChart}/> */}
                 <AddSelect button_class='btn btn-primary' site={{}} building={building}
-                    parent_type='building' site_points_list={site_points_list} />
+                    parent_type='building' site_points_list={site_points_list} AddChart={AddChart}/>
               </div>
             </div>
 
