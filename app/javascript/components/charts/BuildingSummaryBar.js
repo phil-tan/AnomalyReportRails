@@ -2,7 +2,7 @@ import { blue, red, yellow } from '@mui/material/colors';
 import React from 'react'
 import Plot from 'react-plotly.js'
 
-const BuildingSummaryBar = ({ site, site_buildings, charts_data}) => {
+const BuildingSummaryBar = ({ site_buildings, charts_data}) => {
 
   let x = {};
   let y = {};

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import LinePlotForm from './LinePlotForm';
 import KpiForm from './KpiForm';
+import KpiDiffForm from './KpiDiffForm';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
@@ -26,17 +27,19 @@ const AddSelect = ({button_class, site, building, parent_type, site_points_list,
   }
   new_chart.plot_options = ''
 
+
   const handleSelect = (e) => {
     console.log(e.eventKey)
-
-
-    if(e==='Line'){
-      console.log('entered Line Form')
-      setForm('line')
-    }else if(e==='Kpi'){
-      console.log('entered Kpi Form')
-      setForm('kpi')
-    }
+    console.log(e)
+    setForm(e)
+    new_chart.plotType = e
+    // if(e==='Line'){
+    //   console.log('entered Line Form')
+    //   setForm('line')
+    // }else if(e==='Kpi'){
+    //   console.log('entered Kpi Form')
+    //   setForm('kpi')
+    // }
 
     setShow(true)
   }
@@ -49,13 +52,17 @@ const AddSelect = ({button_class, site, building, parent_type, site_points_list,
   }else if(formType==='kpi'){
     form = <KpiForm chart={new_chart} building={building}
               site_points_list={site_points_list} new_or_edit='New' handleClose={handleClose}/>
+  }else if(formType==='kpi-diff'){
+    form = <KpiDiffForm chart={new_chart} building={building}
+              site_points_list={site_points_list} new_or_edit='New' handleClose={handleClose}/>
   }
 
   return (
     <>
     <DropdownButton id="dropdown-item-button" title="Add Chart" className={button_class} onSelect={handleSelect}>
-        <Dropdown.Item eventKey="Line">Line</Dropdown.Item>
-        <Dropdown.Item eventKey="Kpi">Kpi</Dropdown.Item>
+        <Dropdown.Item eventKey="line">Line</Dropdown.Item>
+        <Dropdown.Item eventKey="kpi">Kpi - Sum</Dropdown.Item>
+        <Dropdown.Item eventKey="kpi-diff">Kpi - % Diff</Dropdown.Item>
     </DropdownButton>
 
     {/* <DropdownButton

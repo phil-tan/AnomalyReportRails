@@ -16,6 +16,10 @@ const EditButton = ({button_name, button_class, plot_type, building, chart, site
     form = <KpiForm chart={chart} building={building}
               site_points_list={site_points_list} new_or_edit='Edit' AddChart={AddChart}/>
   }
+  else if(chart.plot_type=='kpi-diff'){
+    form = <KpiForm chart={chart} building={building}
+              site_points_list={site_points_list} new_or_edit='Edit' AddChart={AddChart}/>
+  }
 
   return (
     <>
