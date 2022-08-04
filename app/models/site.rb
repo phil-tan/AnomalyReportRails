@@ -7,6 +7,6 @@ class Site < ApplicationRecord
   end
 
   def points_list
-    CSV.open("app/assets/datasets/site_#{id}_energy.csv", 'r') { |csv| csv.first }
+    CSV.open("public/datasets/site_#{id}_energy.csv", 'r') { |csv| csv.first }
   end
 end

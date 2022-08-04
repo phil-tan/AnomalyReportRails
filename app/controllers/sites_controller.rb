@@ -44,7 +44,7 @@ class SitesController < ApplicationController
     url_args = params[:url_args].split('&')
     start_date = url_args[1]
     end_date = url_args[3]
-    table = CSV.read("app/assets/datasets/site_#{site.id}_energy.csv", headers: true, converters: :numeric)
+    table = CSV.read("public/datasets/site_#{site.id}_energy.csv", headers: true, converters: :numeric)
     table = table.select {|row| Date.parse(row.to_h['dt']) < Date.parse(end_date) && Date.parse(row.to_h['dt']) > Date.parse(start_date)}
     table_by_cols = {}
     table.each do |row|
