@@ -16,9 +16,12 @@ const KpiDiffForm = ({chart, site_points_list, new_or_edit, AddChart}) => {
   if(new_or_edit === 'Edit'){
     useEffect(() => {
       const points_array = chart.points.split(',')
-      setSelected1([points_array[0]])
-      setSelected2([points_array[1]])
-      console.log(points_array)
+      let selected_points = []
+      points_array.forEach(point => {
+        selected_points.push({'label': point, 'value': point})
+      })
+      setSelected1([selected_points[0]])
+      setSelected2([selected_points[1]])
     }, [])
   }
 
