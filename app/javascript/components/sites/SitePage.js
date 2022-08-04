@@ -7,8 +7,21 @@ import Tabs from 'react-bootstrap/Tabs';
 import SiteDash from './SiteDash';
 import BuildingCard from '../buildings/BuildingCard';
 import NewEditModal from '../buildings/NewEditModal';
-import { sort_list } from '../utils';
-import { Dropdown } from 'react-bootstrap';
+
+const sort_list = (obj) => {
+  obj.sort((a, b) => {
+    let fa = a.name.toLowerCase(),
+        fb = b.name.toLowerCase();
+    if (fa < fb) {
+        return -1;
+    }
+    if (fa > fb) {
+        return 1;
+    }
+    return 0;
+  });
+  return obj
+}
 
 const SitePage = ({site, site_buildings}) => {
   const [key, setKey] = useState('buildings');

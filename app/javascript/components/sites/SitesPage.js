@@ -1,8 +1,21 @@
 import React from 'react'
 import NewEditModal from './NewEditModal'
 import SiteCard from './SiteCard'
-import { sort_list } from '../utils'
 
+const sort_list = (obj) => {
+  obj.sort((a, b) => {
+    let fa = a.name.toLowerCase(),
+        fb = b.name.toLowerCase();
+    if (fa < fb) {
+        return -1;
+    }
+    if (fa > fb) {
+        return 1;
+    }
+    return 0;
+  });
+  return obj
+}
 
 const SitesPage = ({sites}) => {
 
