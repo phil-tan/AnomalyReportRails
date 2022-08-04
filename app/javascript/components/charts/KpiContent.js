@@ -12,14 +12,15 @@ const KpiContent = ({ chart, charts_data }) => {
     })
   }
 
-  let value = ''
-  let text_color = ''
+  let value;
+  let value_text;
+  let text_color;
   if(chart.plot_type==='kpi' && charts_data){
     console.log('entered kpi sum content calc')
     if(points[0] in charts_data){
       value = charts_data[points[0]].reduce((a,b) => a + b, 0)
     }
-    value = Math.round(value).toLocaleString('en-US')
+    value_text = Math.round(value).toLocaleString('en-US')
   }else if(chart.plot_type==='kpi-diff' && charts_data){
     console.log(points)
     if(points[0] in charts_data && points[1] in charts_data){
@@ -33,13 +34,14 @@ const KpiContent = ({ chart, charts_data }) => {
       text_color = opt_hash['pos_color']
     }
 
-    value = Math.round(value).toLocaleString('en-US') + '%'
+    value_text = Math.round(value).toLocaleString('en-US') + '%';
+    value_text = (value > 0) ? "+" + value_text : value_text
     text_color = text_color ? text_color : ''
   }
 
   return (
     <div className='kpi-content'>
-      <h1 align='center' style={{color: text_color}}>{ value }</h1>
+      <h1 align='center' style={{color: text_color}}>{ value_text }</h1>
     </div>
   )
 }
