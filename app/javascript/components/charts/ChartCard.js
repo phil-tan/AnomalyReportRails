@@ -1,5 +1,4 @@
 import React from 'react';
-import Plot from 'react-plotly.js'
 import ShowModalButton from './ShowModalButton';
 import Chart from './Chart'
 import EditButton from './EditButton';

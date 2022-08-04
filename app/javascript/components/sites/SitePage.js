@@ -1,6 +1,5 @@
 import React from 'react'
 import SidePanelSite from './SidePanelSite'
-import BuildingsTable from './BuildingsTable'
 import { useState } from 'react'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';

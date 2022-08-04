@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import { Navigate } from "react-router-dom";
+
 
 //For Sites!
 const NewEditModal = ({site, button_name, button_class, new_or_edit}) => {

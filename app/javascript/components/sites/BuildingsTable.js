@@ -1,5 +1,5 @@
 import React from 'react'
-import DataGrid from 'react-data-grid';
+
 
 const BuildingTable = ({site, site_buildings, charts_data}) => {
 
