@@ -89,7 +89,7 @@ const LinePlot = ({ chart, charts_data, if_modal}) => {
         <Plot
           data={ plot_data }
           layout={layout}
-          style={{width: '100%', height: "100%"}}
+          style={{width: '100%', height: "100%", minHeight: 0, maxHeight: '100%', minWidth: '100%'}}
           useResizeHandler={true}
         />
       );
