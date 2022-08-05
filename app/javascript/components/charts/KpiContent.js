@@ -3,7 +3,7 @@ import React from 'react'
 const KpiContent = ({ chart, charts_data }) => {
 
   const points = chart.points.split(',')
-  const plot_options = chart.plot_options ? chart.plot_options.split(',') : []
+  const plot_options = chart.plot_options ? chart.plot_options.replace(" ", '').split(',') : []
   let opt_hash = {}
   if(plot_options.length > 0){
     plot_options.forEach(opt => {
@@ -15,8 +15,9 @@ const KpiContent = ({ chart, charts_data }) => {
   let value_text;
   let text_color;
   const multiplier = opt_hash['multiplier'] ? parseFloat(opt_hash['multiplier']) : 1
-  const multiplier_2 = opt_hash['multiplier-2'] ? parseFloat(opt_hash['multiplier-2']) : 1
-
+  // const multiplier_2 = opt_hash['multiplier-2'] ? parseFloat(opt_hash['multiplier-2']) : 1
+  const units = opt_hash['units'] ? opt_hash['units'] : ''
+  const currency = opt_hash['currency'] ? opt_hash['currency'] : ''
 
   if(chart.plot_type==='kpi' && charts_data){
     console.log('entered kpi sum content calc')
@@ -28,19 +29,23 @@ const KpiContent = ({ chart, charts_data }) => {
     console.log(points)
     if(points[0] in charts_data && points[1] in charts_data){
       const sum1 = multiplier*charts_data[points[0]].reduce((a,b) => a + b, 0)
-      const sum2 = multiplier_2*charts_data[points[1]].reduce((a,b) => a + b, 0)
+      const sum2 = multiplier*charts_data[points[1]].reduce((a,b) => a + b, 0)
       value = (100*(sum1 - sum2)/sum2)
-    }
-    if(value < 0){
-      text_color = opt_hash['neg_color']
-    }else if(value > 0){
-      text_color = opt_hash['pos_color']
     }
 
     value_text = !isNaN(value) ? Math.round(value).toLocaleString('en-US') + '%' : ''
     value_text = (value > 0) ? "+" + value_text : value_text
-    text_color = text_color ? text_color : ''
+
   }
+
+  value_text = units!=='' ? value_text + " " + units : value_text
+  value_text = currency!=='' ? "$" + value_text : value_text
+  if(value < 0){
+    text_color = opt_hash['neg_color']
+  }else if(value > 0){
+    text_color = opt_hash['pos_color']
+  }
+  text_color = text_color ? text_color : ''
 
   return (
     <div className='kpi-content'>
